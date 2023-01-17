@@ -3,7 +3,7 @@
 
 <h3>Add New Bug</h3>
 
-<EditForm Model="AddBug">
+<EditForm Model="AddBug" OnValidSubmit="HandleValidSubmit">
     <InputText @bind-Value="@AddBug.Title" placeholder="Enter Title"/>
     <InputText @bind-Value="@AddBug.Description" placeholder="Enter Description"/>
     <InputNumber @bind-Value="@AddBug.Priority" placeholder="Enter Priority"/>
@@ -14,7 +14,7 @@
     public Bug AddBug { get; set; } = new Bug();
     [Inject]
     public IBugService BugService { get; set; }
-    [RazorInject]
+    [Inject]
     public NavigationManager NavService { get; set; }
 
     protected void HandleValidSubmit()
